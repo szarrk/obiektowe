@@ -82,7 +82,7 @@ final class Movie {
  *
  * @author inf154054
  */
-class Ex3Java {
+public class Ex3Java {
 
     public static void main(String[] args) {
         Person fisrtPerson = new Person("Michael", "Fassbender");
