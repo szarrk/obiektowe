@@ -3,7 +3,7 @@ interface Forecast{
     final class FakeClass implements Forecast{
         @Override
         public int todaysTemperature(int tempFo){
-            return 17;
+            return 11;
         }
     }
 }
@@ -16,15 +16,19 @@ class Weather{
     public int todaysWeather(){
         return (this.temperature.todaysTemperature(0));
     }
-    void weatherInfo(){
-        System.out.println("Temperature is " + todaysWeather());
+    String weatherInfo(){
+        return("Temperature is " + todaysWeather());
     }
 }
 
-class App {
-    public static void main(String[] args) {
-        Forecast forecast = new Forecast.FakeClass();
+public class main {
+
+	public static void main(String[] args) {
+		Forecast forecast = new Forecast.FakeClass();
         Weather today = new Weather(forecast);
-        today.weatherInfo();
-    }
+        String weatherToday = today.weatherInfo();
+        System.out.println(weatherToday);
+        assert "Temperature is 17".equals(weatherToday);
+	}
+
 }
