@@ -1,38 +1,47 @@
 package calculator_project;
 import java.lang.Math;
 
-public class Calculator {
-	boolean quitCalc = false;
+
+interface BasicMathOperations {
+	double addition(double x, double y);
+	double subtraction(double x, double y);
+    double power(double x, double y);
+    double root(double x) throws Exception;
+    double average(double x, double y);
+    double multiplication(double x, double y);
+    double division(double x, double y) throws Exception;
+}
+
+public class Calculator implements BasicMathOperations {
 	double calcResult = 0;
 	
 	double firstNumber;
     double secondNumber;
 	
-	boolean quit () {
-		quitCalc = true;
-		return quitCalc;
-	}
-	
 	//function for adding
-	public double add(double firstNumber, double secondNumber) {
+    @Override
+	public double addition(double firstNumber, double secondNumber) {
 		double sum = firstNumber + secondNumber;
 		return sum;
 	}
 	
 	//function for subtraction
-	public double sub(double firstNumber, double secondNumber) {
-		double subtraction = firstNumber - secondNumber;
-		return subtraction;
+    @Override
+	public double subtraction(double firstNumber, double secondNumber) {
+		double sub = firstNumber - secondNumber;
+		return sub;
 	}
 	
 	//function for multiplying
-	public double mul(double firstNumber, double secondNumber) {
-		double multiplication = firstNumber * secondNumber;
-		return multiplication;
+    @Override
+	public double multiplication(double firstNumber, double secondNumber) {
+		double mul = firstNumber * secondNumber;
+		return mul;
 	}
 	
 	//function for division 
-	public double div(double firstNumber, double secondNumber) throws Exception {
+    @Override
+	public double division(double firstNumber, double secondNumber) throws Exception {
 		if (secondNumber == 0) {
             throw new Exception("It is impossible to divide by 0!");
             }
@@ -40,12 +49,14 @@ public class Calculator {
 	}
 	
 	//function for power
+    @Override
 	public double power(double firstNumber, double secondNumber) {
 		double power = Math.pow(firstNumber, secondNumber);
 		return power;
 	}
 	
 	//function for root
+    @Override
 	public double root(double firstNumber) throws Exception {
 		
 		if (firstNumber < 0) {
@@ -54,8 +65,9 @@ public class Calculator {
 		return (Math.sqrt(firstNumber));
 	}
 	
-	//function for avg
+	//function for average
+    @Override
 	public double average(double firstNumber, double secondNumber) {
-		return (firstNumber + secondNumber /2.0);
+		return ((firstNumber + secondNumber) /2.0);
 	}
 }
